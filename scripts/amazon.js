@@ -46,11 +46,37 @@ products.forEach((product)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="
+          add-to-cart-button 
+          button-primary 
+          js-add-to-cart" 
+          data-product-id="${product.id}"> 
             Add to Cart
           </button>
         </div>`;
         
 });
-
+//line 53: data attritbute in html always starts with data-
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
+
+document.querySelectorAll('.js-add-to-cart') //select the ATC button and put values in button.
+.forEach((button)=>{    //running for each to set values to button variable
+  button.addEventListener('click',()=>{ //add to cart button listener
+   const productId = button.dataset.productId; //fetch the product name when add to cart is clicked
+   let matchingItem;  //created a empty varible
+   cart.forEach((item)=>{
+    if(productId===item.productId){
+      matchingItem = item;
+    }
+   });
+   if(matchingItem){
+    matchingItem.quantity +=1;  //if same item exists only increase the quantity
+   }else{
+    cart.push({   //pushing product to cart array in cart.js
+      productId: productId,
+      quantity: 1
+     });
+    }
+   console.log(cart);
+  });
+});
