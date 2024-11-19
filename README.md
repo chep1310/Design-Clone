@@ -1,1 +1,1 @@
-Just a Practice for Front End of Amazon
+Just for Practice ===> Front End of Amazon
