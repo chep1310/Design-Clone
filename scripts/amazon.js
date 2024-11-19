@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js'; 
+import {products} from '../data/products.js'
 //always put imports at TOP
 //to imports to work always use LIVE Server
 //no need of order in HTML to load scripts first
