@@ -1,6 +1,9 @@
 import {cart, removeFromCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
+ 
+//default export which means only 1 deafult export can be put in a source file
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 //variable to store the html 
 let cartSummaryHTML='';
@@ -119,3 +122,7 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
     updateCartQuantity()
   });
 });
+
+const today = dayjs();
+const deliveryDate = today.add(7, 'days');
+console.log(deliveryDate.format('dddd, MMMM D'));
