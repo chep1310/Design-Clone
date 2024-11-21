@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js'; 
+import {cart, addToCart} from '../data/cart.js'; 
 import {products} from '../data/products.js'
 //always put imports at TOP
 //to imports to work always use LIVE Server
@@ -65,28 +65,24 @@ products.forEach((product)=>{
 //line 53: data attritbute in html always starts with data-
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
-document.querySelectorAll('.js-add-to-cart') //select the ATC button and put values in button.
-.forEach((button)=>{    //running for each to set values to button variable
-  button.addEventListener('click',()=>{ //add to cart button listener
-   const productId = button.dataset.productId; //fetch the product name when add to cart is clicked
-   let matchingItem;  //created a empty varible
-   cart.forEach((item)=>{
-    if(productId===item.productId){
-      matchingItem = item;
-    }
-   });
-   if(matchingItem){
-    matchingItem.quantity +=1;  //if same item exists only increase the quantity
-   }else{
-    cart.push({   //pushing product to cart array in cart.js
-      productId: productId,
-      quantity: 1
-     });
-    }
-    let cartQuantity = 0;
-    cart.forEach((item)=>{
-      cartQuantity += item.quantity;
-    });
-    document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+//function of updating cartqty on homepage only
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach((cartItem)=>{
+    cartQuantity += cartItem.quantity;
+  });
+  document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+}
+
+//select the Add to cart button and put values in button.
+//running forEach to set values to button variable
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{  
+ //add to cart button listener 
+  button.addEventListener('click',()=>{ 
+   //fetch the product name when add to cart is clicked
+   const productId = button.dataset.productId; 
+
+   addToCart(productId);
+   updateCartQuantity();
   });
 });
