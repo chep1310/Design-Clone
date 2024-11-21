@@ -17,6 +17,7 @@ cart.forEach((cartItem)=>{
     }
   });
   cartSummaryHTML+= `
+
   <div class="cart-item-container
    js-cart-item-container-${matchingProduct.id}">
       <div class="delivery-date">
@@ -97,10 +98,16 @@ cart.forEach((cartItem)=>{
     </div>
   `;
 });
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach((cartItem)=>{
+    cartQuantity += cartItem.quantity;
+  });
+  document.querySelector('.js-cart-qty').innerHTML=`${cartQuantity} Items`;
+};
+updateCartQuantity();
 
 document.querySelector('.js-order-summary').innerHTML=cartSummaryHTML;
-
-
 
 document.querySelectorAll('.js-delete-link').forEach((link)=>{
   link.addEventListener('click',()=>{
@@ -109,5 +116,6 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
     const container = document.querySelector(`.js-cart-item-container-${productId}`);
     console.log(container);
     container.remove();
+    updateCartQuantity()
   });
 });

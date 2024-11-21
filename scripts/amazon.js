@@ -65,7 +65,7 @@ products.forEach((product)=>{
 });
 //line 53: data attritbute in html always starts with data-
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
-
+updateCartQuantity();
 //function of updating cartqty on homepage only
 function updateCartQuantity(){
   let cartQuantity = 0;
