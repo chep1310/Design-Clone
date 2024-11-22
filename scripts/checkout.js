@@ -117,7 +117,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
                 ${priceString} Shipping
               </div>
             </div>
-          </div>
+          </div> 
           `
    
   }); 
