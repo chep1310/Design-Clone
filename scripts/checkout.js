@@ -118,7 +118,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
               </div>
             </div>
           </div> 
-          `
+          ` 
    
   }); 
   return html;
