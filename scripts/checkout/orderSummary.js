@@ -7,9 +7,7 @@ import { renderPaymentSummary } from './paymentSummary.js';
 //default export which means only 1 deafult export can be put in a source file
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-
 export function renderOrderSummary(){
-
       //variable to store the html 
       let cartSummaryHTML='';
 
