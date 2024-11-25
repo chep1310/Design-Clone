@@ -1,7 +1,7 @@
 import {cart, removeFromCart, updateDelvieryOption} from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { getProduct, products, } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
-import { deliveryOptions } from '../../data/deliveryOptions.js'
+import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
  
 //default export which means only 1 deafult export can be put in a source file
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -15,24 +15,13 @@ export function renderOrderSummary(){
       cart.forEach((cartItem)=>{
         //to get the product id from cart array in cart.js
         const productId = cartItem.productId;
-
-        let matchingProduct;
-
-        products.forEach((product)=>{
-          if(product.id===productId){
-            matchingProduct= product;
-          }
-        });
+        
+        const matchingProduct=getProduct(productId);
 
         const deliveryOptionId = cartItem.deliveryOptionId;
 
-        let deliveryOption;
-        
-        deliveryOptions.forEach((option)=>{
-          if(option.id === deliveryOptionId){
-            deliveryOption = option;
-          }
-        });
+        const deliveryOption=getDeliveryOption(deliveryOptionId);
+
         const today = dayjs();
         const deliveryDate = 
         today.add(deliveryOption.deliveryDays,'days');
@@ -154,6 +143,7 @@ export function renderOrderSummary(){
         element.addEventListener('click',()=>{
           const {productId, deliveryOptionId} = element.dataset;//shortcut
           updateDelvieryOption(productId, deliveryOptionId)
+          
           renderOrderSummary();//recusrion 
         });
       });
