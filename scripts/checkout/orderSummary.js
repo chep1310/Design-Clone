@@ -2,6 +2,7 @@ import {cart, removeFromCart, updateDelvieryOption} from '../../data/cart.js';
 import { getProduct, products, } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from './paymentSummary.js'; 
  
 //default export which means only 1 deafult export can be put in a source file
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -135,7 +136,8 @@ export function renderOrderSummary(){
           const container = document.querySelector(`.js-cart-item-container-${productId}`);
           console.log(container);
           container.remove();
-          updateCartQuantity()
+          updateCartQuantity();
+          renderPaymentSummary();
         });
       });
   
@@ -143,7 +145,7 @@ export function renderOrderSummary(){
         element.addEventListener('click',()=>{
           const {productId, deliveryOptionId} = element.dataset;//shortcut
           updateDelvieryOption(productId, deliveryOptionId)
-          
+          renderPaymentSummary();
           renderOrderSummary();//recusrion 
         });
       });
