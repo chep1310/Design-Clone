@@ -2,7 +2,8 @@
 //class is a better way to genrate objects in oop
 class Cart{
   cartItems;
-  localStorageKey= undefined;
+  #localStorageKey= undefined;
+  //# makes the variable private to the class
   //both the above have undefined as the value
    
   //to call the method of the page(setup code)
