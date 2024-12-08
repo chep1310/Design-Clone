@@ -32,6 +32,7 @@ class Product{
   getPrice(){
   return `$${formatCurrency(this.priceCents)}`
   };
+
   extraInfoHTML(){
     return '';
   }
@@ -47,6 +48,7 @@ class Clothing extends Product{
   this.sizeChartLink = productDetails.sizeChartLink;
  }
 
+ //method overiding
  extraInfoHTML(){
   return `
   <a href="${this.sizeChartLink}" target="_blank">Size Chart</a>
