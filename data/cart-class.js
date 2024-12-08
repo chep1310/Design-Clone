@@ -2,19 +2,19 @@
 //class is a better way to genrate objects in oop
 class Cart{
   cartItems;
-  #localStorageKey= undefined;
+  #localStorageKey= undefined; //private property
   //# makes the variable private to the class
   //both the above have undefined as the value
    
   //to call the method of the page(setup code)
   //cannot return in constructor
   constructor(localStorageKey){
-    this.localStorageKey = localStorageKey;
+    this.#localStorageKey = localStorageKey;
     this.loadFromStorage();    
   }
 
   loadFromStorage(){
-    this.cartItems =  JSON.parse(localStorage.getItem(this.localStorageKey));
+    this.cartItems =  JSON.parse(localStorage.getItem(this.#localStorageKey));
       if(!this.cartItems){
         this.cartItems = [{
           productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -29,7 +29,7 @@ class Cart{
     };
 
     saveToStorage(){
-      localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+      localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     };
 
   //function to use button add to cart
