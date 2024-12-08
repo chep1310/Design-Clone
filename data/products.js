@@ -90,9 +90,27 @@ object3.method();
 //inside a method 'this' points to the outer object in which the method is avlb;       inside a function this is undefined (but we can change it using .call and pass a parameter which is value of 'this);         in =>{} arrow function this doesnt change its value
 
 
+export let products= [];
+export function loadProducts(fun){
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', ()=>{
+    products = JSON.parse(xhr.response).map((productDetails)=>{
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+};
+loadProducts()
 
 
-
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -758,3 +776,4 @@ export const products = [
   }
   return new Product(productDetails);
 });
+*/
