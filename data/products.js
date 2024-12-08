@@ -56,23 +56,39 @@ class Clothing extends Product{
  }
 };
 
-const tshirt = new Clothing({
-  id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-  image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
-  name: "Adults Plain Cotton T-Shirt - 2 Pack",
-  rating: {
-    stars: 4.5,
-    count: 56
-  },
-  priceCents: 799,
-  keywords: [
-    "tshirts",
-    "apparel",
-    "mens"
-  ],
-  type: "clothing", //discrimating property
-  sizeChartLink: "images/clothing-size-chart.png"
-});
+/*using date as built in function
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+
+
+console.log(this); //undefined
+const object2={
+  a:2,
+  b: this.a
+}
+
+
+function logThis(){
+  console.log(this);
+}
+logThis();   //undefined
+logThis.call('hello');  //set this to hello
+
+
+const object3= {
+  method: () =>{
+    console.log(this);
+  }
+
+};
+
+object3.method();
+*/
+
+
+//inside a method 'this' points to the outer object in which the method is avlb;       inside a function this is undefined (but we can change it using .call and pass a parameter which is value of 'this);         in =>{} arrow function this doesnt change its value
+
 
 
 
