@@ -1,7 +1,12 @@
+
+//class is a better way to genrate objects in oop
 class Cart{
-  cartItems = undefined;
+  cartItems;
   localStorageKey= undefined;
+  //both the above have undefined as the value
    
+  //to call the method of the page(setup code)
+  //cannot return in constructor
   constructor(localStorageKey){
     this.localStorageKey = localStorageKey;
     this.loadFromStorage();    
