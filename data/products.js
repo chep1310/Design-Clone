@@ -110,7 +110,7 @@ export function loadProductsFetch(){
 }
 
 
-/*
+/* 
 loadProductsFetch().then(()=>{
   console.log('next step')
 })
@@ -799,4 +799,5 @@ export const products = [
   }
   return new Product(productDetails);
 });
+
 */
