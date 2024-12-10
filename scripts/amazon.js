@@ -1,11 +1,11 @@
 import {cart, addToCart} from '../data/cart.js'; 
-import {products, loadProducts} from '../data/products.js'
+import {products, loadProductsFetch} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 //always put imports at TOP
 //to imports to work always use LIVE Server
 //no need of order in HTML to load scripts first
 
-loadProducts(renderProductsGrid); //callback
+loadProductsFetch(renderProductsGrid); //callback
 
 export function renderProductsGrid(){
     let productsHTML = '';
