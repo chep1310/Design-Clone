@@ -6,12 +6,15 @@ import { loadCart } from '../data/cart.js';
 //import '../data/cart-class.js';
 //import '../data/backend-practice.js';
 
+
+//shortcut for promises
+//use async await intead of promises and callback
 async function loadPage(){
   await loadProductsFetch(); //only use inside async
 
-  await new Promise((resolve)=>{
+  const value = await new Promise((resolve)=>{
     loadCart(()=>{
-      resolve();
+      resolve('value3');
     });
   })
 
