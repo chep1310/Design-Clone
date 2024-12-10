@@ -12,10 +12,15 @@ import { loadCart } from '../data/cart.js';
 async function loadPage(){
 
   try{
+
+    //throw 'Error 1';
+
     await loadProductsFetch(); //only use inside async
 
-    const value = await new Promise((resolve)=>{
+    const value = await new Promise((resolve, reject)=>{
+     // throw 'Error2';
       loadCart(()=>{
+        //reject('error3')
         resolve('value3');
       });
     })
