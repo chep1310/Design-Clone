@@ -10,13 +10,18 @@ import { loadCart } from '../data/cart.js';
 //shortcut for promises
 //use async await intead of promises and callback
 async function loadPage(){
-  await loadProductsFetch(); //only use inside async
 
-  const value = await new Promise((resolve)=>{
-    loadCart(()=>{
-      resolve('value3');
-    });
-  })
+  try{
+    await loadProductsFetch(); //only use inside async
+
+    const value = await new Promise((resolve)=>{
+      loadCart(()=>{
+        resolve('value3');
+      });
+    })
+  } catch (error){
+    console.log('Unexpected Error. Please Try again later');
+  }
 
   renderPaymentSummary();
   renderOrderSummary();
