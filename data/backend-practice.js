@@ -6,7 +6,7 @@ xhr.addEventListener('load', ()=>{
 });
 
 xhr.open('GET', 'https://supersimplebackend.dev/');
-xhr.send();  //asynchronous code
+xhr.send();  //asynchronous code 
 
 
 
