@@ -1,1 +1,1 @@
-Just for Practice ===> Front End of Amazon
+Amazon Design Clone, Learning Purpose
